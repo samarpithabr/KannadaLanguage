@@ -6,12 +6,15 @@ public class Kannada {
     private String englishWords;
     private int imageid;
     private String kannadaWords;
-     public Kannada(String eWords,int imageKannada,String kWords){
-         englishWords=eWords;
-         imageid=imageKannada;
-         kannadaWords=kWords;
+    private int audioId;
 
-     }
+    public Kannada(String eWords, int imageKannada, String kWords, int aId) {
+        audioId = aId;
+        englishWords = eWords;
+        imageid = imageKannada;
+        kannadaWords = kWords;
+
+    }
 
     public int getImageid() {
         return imageid;
@@ -23,5 +26,9 @@ public class Kannada {
 
     public String getKannadaWords() {
         return kannadaWords;
+    }
+
+    public int getAudioId() {
+        return audioId;
     }
 }

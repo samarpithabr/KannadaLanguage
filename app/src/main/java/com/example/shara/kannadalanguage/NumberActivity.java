@@ -17,27 +17,27 @@ public class NumberActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_number);
-        ArrayList<Kannada> arraylst = new ArrayList<Kannada>();
-        arraylst.add(new Kannada("one",R.drawable.ic_launcher_background,"ಒಂದು"));
-        arraylst.add(new Kannada("two",R.drawable.ic_launcher_background,"ಎರಡು"));
-        arraylst.add(new Kannada("three",R.drawable.ic_launcher_background,"ಮೂರೂ "));
-        arraylst.add(new Kannada("four",R.drawable.ic_launcher_background,"ನಾಲ್ಕು"));
-        arraylst.add(new Kannada("five",R.drawable.ic_launcher_background,"ಐದು"));
-        arraylst.add(new Kannada("six",R.drawable.ic_launcher_background,"ಆರು"));
-        arraylst.add(new Kannada("seven",R.drawable.ic_launcher_background,"ಏಳು"));
-        arraylst.add(new Kannada("eight",R.drawable.ic_launcher_background,"ಎಂಟು"));
-        arraylst.add(new Kannada("nine",R.drawable.ic_launcher_background,"ಒಂಬತ್ತು"));
-        arraylst.add(new Kannada("ten",R.drawable.ic_launcher_background,"ಹತ್ತು"));
-        KannadaAdapter musadp = new KannadaAdapter(this,arraylst);
+        final ArrayList<Kannada> arraylst = new ArrayList<Kannada>();
+        arraylst.add(new Kannada(getString(R.string.o), R.drawable.loud, getString(R.string.on), R.raw.one));
+        arraylst.add(new Kannada(getString(R.string.tw), R.drawable.loud, getString(R.string.er), R.raw.two));
+        arraylst.add(new Kannada(getString(R.string.thr), R.drawable.loud, getString(R.string.moo), R.raw.three));
+        arraylst.add(new Kannada(getString(R.string.fr), R.drawable.loud, getString(R.string.nal), R.raw.foor));
+        arraylst.add(new Kannada(getString(R.string.fv), R.drawable.loud, getString(R.string.aid), R.raw.five));
+        arraylst.add(new Kannada(getString(R.string.si), R.drawable.loud, getString(R.string.ar), R.raw.six));
+        arraylst.add(new Kannada(getString(R.string.sev), R.drawable.loud, getString(R.string.elu), R.raw.svn));
+        arraylst.add(new Kannada(getString(R.string.eg), R.drawable.loud, getString(R.string.ent), R.raw.eight));
+        arraylst.add(new Kannada(getString(R.string.nin), R.drawable.loud, getString(R.string.om), R.raw.nine));
+        arraylst.add(new Kannada(getString(R.string.t), R.drawable.loud, getString(R.string.hat), R.raw.ten));
+        KannadaAdapter musadp = new KannadaAdapter(this, arraylst);
         ListView listView = (ListView) findViewById(R.id.list);
         listView.setAdapter(musadp);
-         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                mMediaPlayer = MediaPlayer.create(NumberActivity.this, R.raw.first);
+                Kannada arylst = arraylst.get(position);
+                mMediaPlayer = MediaPlayer.create(NumberActivity.this, arylst.getAudioId());
                 mMediaPlayer.start();
             }
-
 
 
         });
