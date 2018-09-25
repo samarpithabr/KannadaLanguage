@@ -15,9 +15,9 @@ public class Alphabets extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_number);
+        setContentView(R.layout.activity_alphabets);
         final ArrayList<Kannada> arraylst = new ArrayList<Kannada>();
-        arraylst.add(new Kannada(getString(R.string.smalla), R.drawable.loud, getString(R.string.ah), R.raw.ca));
+        arraylst.add(new Kannada(getString(R.string.smalla), R.drawable.loud, getString(R.string.ah), R.raw.ahhhahha));
         arraylst.add(new Kannada(getString(R.string.ahh), R.drawable.loud, getString(R.string.ahhha), R.raw.caah));
         arraylst.add(new Kannada(getString(R.string.ii), R.drawable.loud, getString(R.string.e), R.raw.ce));
         arraylst.add(new Kannada(getString(R.string.i), R.drawable.loud, getString(R.string.ee), R.raw.cee));
@@ -75,7 +75,30 @@ public class Alphabets extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Kannada arylst = arraylst.get(position);
                 mMediaPlayer = MediaPlayer.create(Alphabets.this, arylst.getAudioId());
+                //mMediaPlayer.start();
+                //mMediaPlayer = MediaPlayer.create(this,arylst.getAudioId());
+                mMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.reset();
+                        mp.release();
+                        mMediaPlayer = null;
+                        try {
+                            mp.reset();
+                            mp.prepare();
+                            mp.stop();
+                            mp.release();
+                            mp=null;
+                        }
+                        catch (Exception e)
+                        {
+                            e.printStackTrace();
+                        }
+                    }
+
+                });
                 mMediaPlayer.start();
+
             }
 
 
